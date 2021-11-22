@@ -1,6 +1,8 @@
 package cn.devunion.maze;
 
 import cn.devunion.maze.common.Room;
+import cn.devunion.maze.factory.MazeFactory;
+import cn.devunion.maze.factory.impl.DefaultMazeFactoryImpl;
 
 /**
  * <p>Description: 玩家</p>
@@ -17,7 +19,8 @@ public class Player {
 	private Direction direction;
 
 	public Player(MazeGame mazeGame, int roomNo, Direction direction){
-		Maze maze = mazeGame.createMaze();
+		MazeFactory mazeFactory = new DefaultMazeFactoryImpl();
+		Maze maze = mazeGame.createMaze(mazeFactory);
 		// 设置房间 => 0
 		this.position = maze.getRoom(roomNo);
 		// 设定指向 => 东

@@ -3,6 +3,7 @@ package cn.devunion.maze;
 import cn.devunion.maze.common.Door;
 import cn.devunion.maze.common.Room;
 import cn.devunion.maze.common.Wall;
+import cn.devunion.maze.factory.MazeFactory;
 
 /**
  * <p>Description: 创建迷宫的类</p>
@@ -11,28 +12,28 @@ import cn.devunion.maze.common.Wall;
  */
 public class MazeGame {
 
-	public Maze createMaze(){
-		Maze maze = new Maze();
+	public Maze createMaze(MazeFactory mazeFactory) {
+		Maze maze = mazeFactory.makeMaze();
 		// 建立边界墙
-		Wall wallEdge0 = new Wall();
-		Wall wallEdge1 = new Wall();
-		Wall wallEdge2 = new Wall();
-		Wall wallEdge3 = new Wall();
-		Wall wallEdge4 = new Wall();
-		Wall wallEdge5 = new Wall();
-		Wall wallEdge6 = new Wall();
-		Wall wallEdge7 = new Wall();
+		Wall wallEdge0 = mazeFactory.makeWall();
+		Wall wallEdge1 = mazeFactory.makeWall();
+		Wall wallEdge2 = mazeFactory.makeWall();
+		Wall wallEdge3 = mazeFactory.makeWall();
+		Wall wallEdge4 = mazeFactory.makeWall();
+		Wall wallEdge5 = mazeFactory.makeWall();
+		Wall wallEdge6 = mazeFactory.makeWall();
+		Wall wallEdge7 = mazeFactory.makeWall();
 		// 建立公共墙
-		Wall wallPublic0 = new Wall();
-		Wall wallPublic1 = new Wall();
+		Wall wallPublic0 = mazeFactory.makeWall();
+		Wall wallPublic1 = mazeFactory.makeWall();
 		// 建立四个房间
-		Room room0 = new Room(0);
-		Room room1 = new Room(1);
-		Room room2 = new Room(2);
-		Room room3 = new Room(3);
+		Room room0 = mazeFactory.makeRoom(0);
+		Room room1 = mazeFactory.makeRoom(1);
+		Room room2 = mazeFactory.makeRoom(2);
+		Room room3 = mazeFactory.makeRoom(3);
 		// 建立公共门
-		Door door0 = new Door(Door.OPEN, room0, room1);
-		Door door1 = new Door(Door.OPEN, room1, room3);
+		Door door0 = mazeFactory.makeDoor(Door.OPEN, room0, room1);
+		Door door1 = mazeFactory.makeDoor(Door.OPEN, room1, room3);
 
 		room0.setSite(Direction.WEST, wallEdge0);
 		room0.setSite(Direction.NORTH, wallEdge1);

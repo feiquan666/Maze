@@ -9,7 +9,6 @@ import cn.devunion.maze.Player;
  * <p>@Author: 飞拳</p>
  */
 public class Wall extends MapSite {
-
 	@Override
 	public String enter(Player player) {
 		String msg = "这是一堵墙，您碰壁了";
